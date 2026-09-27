@@ -16,7 +16,7 @@ const West: React.FC<{t: Timeline}> = ({t}) => {
   const sf = t.at('Francisco');
   return (
     <RouteMap
-      keys={[{f: 0, x: 1700, y: 1050, s: 0.62}, {f: o, x: 1500, y: 1000, s: 0.62}, {f: sf + 10, x: 1100, y: 1000, s: 0.5}, {f: t.at('stays') + 10, x: 900, y: 1050, s: 0.55}]}
+      keys={[{f: 0, x: 2853, y: 1591, s: 0.379}, {f: o, x: 2521, y: 1516, s: 0.379}, {f: sf + 10, x: 1855, y: 1527, s: 0.306}, {f: t.at('stays') + 10, x: 1521, y: 1613, s: 0.336}]}
       legs={[{pts: [P.omaha, P.kearny, P.laramie, P.saltlake, P.sf], a: o + 2, b: sf + 6}]}
       pins={[{p: P.omaha, at: o, label: 'Omaha', dx: 10, dy: 20}, {p: P.sf, at: sf, label: 'San Francisco', dx: 20, dy: 20}]}
     >
@@ -76,7 +76,7 @@ const Burner: React.FC<{t: Timeline}> = ({t}) => (
 );
 
 const Dakota: React.FC<{t: Timeline}> = ({t}) => (
-  <RouteMap keys={[{f: t.at('Back in'), x: 1000, y: 950, s: 0.6}, {f: t.at('Deadwood') + 10, x: P.deadwood[0], y: P.deadwood[1] + 40, s: 1.3}]}
+  <RouteMap keys={[{f: t.at('Back in'), x: 1690, y: 1449, s: 0.367}, {f: t.at('Deadwood') + 10, x: P.deadwood[0], y: P.deadwood[1] + 65, s: 0.795}]}
     legs={[{pts: arc(P.sf, P.deadwood, -0.15), a: t.at('heads'), b: t.at('Deadwood') + 4}]}
     pins={[{p: P.deadwood, at: t.at('Deadwood'), label: 'Deadwood', dx: 20, dy: -70}]}>
     <Note text="something totally different..." x={140} y={110} size={58} at={t.at('totally')} />

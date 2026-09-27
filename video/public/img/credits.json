@@ -265,5 +265,13 @@
     "date": "circa 1890date QS:P,+1890-00-00T00:00:00Z/9,P1480,Q5727902",
     "licence": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Chickamauga.jpg"
+  },
+  "maps/usgs_1880.jpg": {
+    "title": "Map of the United States",
+    "artist": "U.S. Geological Survey",
+    "date": "1880",
+    "licence": "No known restrictions on publication",
+    "page": "https://www.loc.gov/item/2019360437/",
+    "note": "Library of Congress, 6000 px IIIF export"
   }
 }

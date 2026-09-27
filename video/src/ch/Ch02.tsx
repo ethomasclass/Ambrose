@@ -12,7 +12,7 @@ const N = words as Narration;
 export const CH02_FRAMES = Math.ceil(N.duration * 30) + 30;
 
 const Ohio: React.FC<{t: Timeline}> = ({t}) => (
-  <RouteMap keys={[{f: 0, x: P.meigs[0] - 150, y: P.meigs[1] - 60, s: 0.9}, {f: t.at('Ohio') + 10, x: P.meigs[0] - 40, y: P.meigs[1] - 20, s: 1.5}]}
+  <RouteMap keys={[{f: 0, x: P.meigs[0] - 245, y: P.meigs[1] - 98, s: 0.55}, {f: t.at('Ohio') + 10, x: P.meigs[0] - 65, y: P.meigs[1] - 33, s: 0.917}]}
     pins={[{p: P.meigs, at: t.at('Meigs'), label: 'Meigs County, Ohio', dx: -300, dy: 30}]}>
     <Highlight text="1842" x={110} y={100} size={110} at={t.at('1842')} seed={201} rot={-2} />
     <Note text="born in a log cabin" x={140} y={270} size={60} at={t.at('log')} />
@@ -58,7 +58,7 @@ const Intern: React.FC<{t: Timeline}> = ({t}) => (
 );
 
 const Thought: React.FC<{t: Timeline}> = ({t}) => (
-  <RouteMap keys={[{f: t.at('But notice'), x: P.warsaw[0], y: P.warsaw[1] + 60, s: 1.2}, {f: t.at('Hold') + 20, x: P.warsaw[0], y: P.warsaw[1] + 60, s: 1.35}]}
+  <RouteMap keys={[{f: t.at('But notice'), x: P.warsaw[0], y: P.warsaw[1] + 98, s: 0.734}, {f: t.at('Hold') + 20, x: P.warsaw[0], y: P.warsaw[1] + 98, s: 0.825}]}
     pins={[{p: P.warsaw, at: t.at('But notice'), label: 'Indiana', dx: 20, dy: -70}]} dim={0.1}>
     <Note text="not old enough to shave..." x={140} y={120} size={58} at={t.at('shave')} />
     <Note text="already working at a newspaper" x={170} y={220} size={58} at={t.at('already')} />

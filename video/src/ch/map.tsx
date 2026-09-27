@@ -1,21 +1,21 @@
-// Bierce's route on Mitchell's 1867 map of the United States (it reaches into northern Mexico, so
-// one map carries the whole story). Camera keys are in map pixels; the camera glides smoothly while
+// Bierce's route on the U.S. Geological Survey's 1880 map of the United States, which runs from the
+// Great Lakes down through northern Mexico, so one map carries the whole story. Camera keys are in map pixels; the camera glides smoothly while
 // pins, legs and labels step at 12 fps like every other mark.
 import React from 'react';
 import {AbsoluteFill, Easing, Img, interpolate, staticFile, useCurrentFrame} from 'remotion';
 import {clamp} from '../lib/anim';
 import {INK, JF, Tag, useGFrame, usePal} from '../jh/Kit';
 
-export const MAP = {w: 3840, h: 2438, src: 'img/maps/mitchell_us_1867.jpg'};
-export const MAP_TAG = "Mitchell's Map of the United States and Territories, 1867 · Geographicus via Wikimedia Commons";
+export const MAP = {w: 6000, h: 4288, src: 'img/maps/usgs_1880.jpg'};
+export const MAP_TAG = "U.S. Geological Survey, Map of the United States, 1880 · Library of Congress";
 
-/** Places in map pixels (read off the 3840 px scan). */
+/** Places in map pixels, computed from latitude and longitude with a projection fitted to landmarks on the scan
+ * (Monterey, Cape San Lucas, Brownsville, Cape Sable, Cape Hatteras, Duluth, New Orleans...; error under ~30 px). */
 export const P = {
-  meigs: [2765, 1120], warsaw: [2470, 965], shiloh: [2290, 1440], chattanooga: [2540, 1440], kennesaw: [2540, 1522],
-  omaha: [1882, 997], kearny: [1745, 1045], laramie: [1440, 905], saltlake: [880, 905], sf: [300, 1100],
-  deadwood: [1470, 760], dc: [2958, 1113], neworleans: [2230, 1878], sanantonio: [1800, 1905],
-  elpaso: [1228, 1690], juarez: [1222, 1702], tierrablanca: [1240, 1728], chihuahua: [1312, 1910],
-  ojinaga: [1322, 1848], sierramojada: [1460, 2035],
+  meigs: [4519, 1677], warsaw: [4115, 1455], shiloh: [3941, 2216], chattanooga: [4248, 2201], kennesaw: [4334, 2325],
+  omaha: [3150, 1506], kearny: [2859, 1579], laramie: [2329, 1367], saltlake: [1625, 1465], sf: [563, 1631],
+  deadwood: [2406, 1117], dc: [5010, 1616], neworleans: [3793, 2873], sanantonio: [2902, 2956], elpaso: [2080, 2621],
+  juarez: [2087, 2630], tierrablanca: [2079, 2685], chihuahua: [2089, 3016], ojinaga: [2276, 2912], sierramojada: [2330, 3204],
 } satisfies Record<string, number[]>;
 
 export type Cam = {f: number; x: number; y: number; s: number};
@@ -53,10 +53,12 @@ export const RouteMap: React.FC<{keys: Cam[]; legs?: Leg[]; pins?: Pin[]; dim?: 
   const frame = useCurrentFrame();
   const g = useGFrame();
   const pal = usePal();
-  const cam = camAt(keys, frame);
-  const s = cam.s;
+  // Keep the map filling the frame: never zoom out past its edges, never pan off them.
+  const raw = camAt(keys, frame);
+  const s = Math.max(raw.s, 1920 / MAP.w, 1080 / MAP.h);
+  const cam = {...raw, s, x: Math.min(Math.max(raw.x, 960 / s), MAP.w - 960 / s), y: Math.min(Math.max(raw.y, 540 / s), MAP.h - 540 / s)};
   const toScreen = ([x, y]: number[]) => [960 + (x - cam.x) * s, 540 + (y - cam.y) * s];
-  const lw = 7 / Math.max(s, 0.35);
+  const lw = 7 / s;
   const drawLeg = (l: Leg, i: number, opacity = 1) => {
     const p = interpolate(g, [l.a, l.b], [0, 1], {...clamp, easing: Easing.inOut(Easing.quad)});
     if (p <= 0) return null;
@@ -80,7 +82,7 @@ export const RouteMap: React.FC<{keys: Cam[]; legs?: Leg[]; pins?: Pin[]; dim?: 
         <path d={dStr} fill="none" stroke="rgba(0,0,0,0.45)" strokeWidth={lw * 1.45} strokeLinejoin="round" strokeLinecap="round" transform={`translate(${4 / s} ${6 / s})`}
           strokeDasharray={l.dashed ? `${40} ${30}` : undefined} />
         <path d={dStr} fill="none" stroke={l.color ?? pal.mark} strokeWidth={lw} strokeLinejoin="round" strokeLinecap="round" strokeDasharray={l.dashed ? `${40} ${30}` : undefined} />
-        {p < 1 && <circle cx={head[0]} cy={head[1]} r={8 / Math.max(s, 0.35)} fill={l.color ?? pal.mark} stroke={INK} strokeWidth={3 / Math.max(s, 0.35)} />}
+        {p < 1 && <circle cx={head[0]} cy={head[1]} r={8 / s} fill={l.color ?? pal.mark} stroke={INK} strokeWidth={3 / s} />}
       </g>
     );
   };

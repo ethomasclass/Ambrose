@@ -51,8 +51,8 @@ const OffMap: React.FC<{t: Timeline}> = ({t}) => {
   const walk = t.at('walks');
   return (
     <RouteMap
-      keys={[{f: a - 2, x: P.chihuahua[0] + 60, y: P.chihuahua[1] + 80, s: 1.4}, {f: t.at('map') + 20, x: P.chihuahua[0] + 160, y: P.chihuahua[1] + 180, s: 1.0}]}
-      legs={[{pts: arc(P.chihuahua, [1700, 2330], 0.15), a: walk - 4, b: t.at('map') + 10, dashed: true}]}
+      keys={[{f: a - 2, x: P.chihuahua[0] + 98, y: P.chihuahua[1] + 131, s: 0.856}, {f: t.at('map') + 20, x: P.chihuahua[0] + 262, y: P.chihuahua[1] + 294, s: 0.611}]}
+      legs={[{pts: arc(P.chihuahua, [P.chihuahua[0] + 700, P.chihuahua[1] + 1100], 0.15), a: walk - 4, b: t.at('map') + 10, dashed: true}]}
       pins={[{p: P.chihuahua, at: a, label: 'Chihuahua', dx: -250, dy: -80}]}
       dim={0.1}
     >
@@ -114,7 +114,7 @@ const Seven: React.FC<{t: Timeline}> = ({t}) => (
 );
 
 const Question: React.FC<{t: Timeline}> = ({t}) => (
-  <RouteMap keys={[{f: 0, x: 1900, y: 1300, s: 0.44}]} dim={0.55}>
+  <RouteMap keys={[{f: 0, x: 3181, y: 1987, s: 0.269}]} dim={0.55}>
     <Note text="so here's the question..." x={200} y={200} size={60} at={t.at("So here's")} />
     <Highlight text="HOW DOES ONE MAN" x={200} y={330} size={110} at={t.at('How does')} seed={21} rot={-2} />
     <Highlight text="LIVE THAT MANY LIVES?" x={240} y={510} size={110} at={t.at('live that')} seed={23} rot={-1} />
@@ -133,7 +133,7 @@ const Title: React.FC = () => {
   const g = useGFrame();
   const pal = usePal();
   return (
-    <RouteMap keys={[{f: 0, x: 1900, y: 1300, s: 0.44}, {f: TITLE_FRAMES, x: 1900, y: 1300, s: 0.47}]} dim={0.5}>
+    <RouteMap keys={[{f: 0, x: 3181, y: 1987, s: 0.269}, {f: TITLE_FRAMES, x: 3181, y: 1987, s: 0.287}]} dim={0.5}>
       <Highlight text="THE MAN WHO" x={250} y={250} size={130} at={4} seed={61} rot={-2} />
       <Highlight text="COULDN'T SIT STILL" x={250} y={450} size={130} at={8} seed={63} rot={-2} />
       {g >= 16 && <div style={{position: 'absolute', left: 300, top: 690, fontFamily: JF.display, fontSize: 72, color: pal.mark, textShadow: '0 3px 16px rgba(0,0,0,0.8)', opacity: interpolate(g, [16, 22], [0, 1], clamp)}}>Ambrose Bierce</div>}

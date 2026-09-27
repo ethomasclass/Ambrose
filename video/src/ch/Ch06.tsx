@@ -48,7 +48,7 @@ const Huntington: React.FC<{t: Timeline}> = ({t}) => {
 };
 
 const Send: React.FC<{t: Timeline}> = ({t}) => (
-  <RouteMap keys={[{f: t.at('So Hearst'), x: 1600, y: 1100, s: 0.46}]}
+  <RouteMap keys={[{f: t.at('So Hearst'), x: 2686, y: 1674, s: 0.281}]}
     legs={[{pts: arc(P.sf, P.dc, -0.22), a: t.at('sends'), b: t.at('Washington') + 6}]}
     pins={[{p: P.sf, at: t.at('So Hearst'), label: 'San Francisco', dx: 20, dy: 10}, {p: P.dc, at: t.at('Washington'), label: 'Washington', dx: -280, dy: 10}]}>
     <Note text="Hearst sends Bierce east..." x={140} y={110} size={60} at={t.at('sends')} />

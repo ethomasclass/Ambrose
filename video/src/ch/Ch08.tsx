@@ -18,7 +18,7 @@ const Tour: React.FC<{t: Timeline}> = ({t}) => {
   const ep = t.at('El Paso');
   return (
     <RouteMap
-      keys={[{f: 0, x: 2700, y: 1250, s: 0.8}, {f: bf + 20, x: 2550, y: 1450, s: 0.8}, {f: tx, x: 2100, y: 1650, s: 0.7}, {f: t.at('border') + 10, x: 1500, y: 1700, s: 0.8}]}
+      keys={[{f: 0, x: 4514, y: 1884, s: 0.489}, {f: bf + 20, x: 4260, y: 2210, s: 0.489}, {f: tx, x: 3506, y: 2544, s: 0.428}, {f: t.at('border') + 10, x: 2506, y: 2641, s: 0.489}]}
       faded={[{pts: arc(P.chattanooga, P.shiloh, 0.1), a: bf, b: bf + 12}]}
       legs={[
         {pts: arc(P.dc, P.kennesaw, 0.12), a: bf - 6, b: bf + 16},
@@ -108,19 +108,19 @@ const Crossing: React.FC<{t: Timeline}> = ({t}) => (
 );
 
 const TierraBlanca: React.FC<{t: Timeline}> = ({t}) => (
-  <RouteMap keys={[{f: t.at('In late'), x: P.juarez[0] + 80, y: P.juarez[1] + 60, s: 1.7}]}
+  <RouteMap keys={[{f: t.at('In late'), x: P.juarez[0] + 131, y: P.juarez[1] + 98, s: 1.039}]}
     legs={[{pts: arc(P.juarez, P.tierrablanca, 0.1), a: t.at('Battle'), b: t.at('Tierra') + 4}]}
     pins={[{p: P.juarez, at: t.at('In late'), label: 'Juárez', dx: -180, dy: -60}, {p: P.tierrablanca, at: t.at('Tierra'), label: 'Tierra Blanca', dx: 20, dy: 10}]}>
     <Highlight text="NOVEMBER 1913" x={110} y={100} size={90} at={t.at('November')} seed={813} rot={-2} />
     <Note text="a big win for Villa" x={140} y={240} size={60} at={t.at('big win')} />
-    <Note text="grabbed a rifle? won a sombrero?" x={960} y={640} size={56} at={t.at('rifle')} color="#FF9F1C" />
-    <Note text="(hard to confirm)" x={1000} y={740} size={54} at={t.at('confirm')} color="#ffffff" />
-    <Note text="...not out of character" x={1040} y={840} size={56} at={t.at('character')} />
+    <Note text="grabbed a rifle? won a sombrero?" x={700} y={640} size={56} at={t.at('rifle')} color="#FF9F1C" />
+    <Note text="(hard to confirm)" x={740} y={740} size={54} at={t.at('confirm')} color="#ffffff" />
+    <Note text="...not out of character" x={780} y={840} size={56} at={t.at('character')} />
   </RouteMap>
 );
 
 const Chihuahua: React.FC<{t: Timeline}> = ({t}) => (
-  <RouteMap keys={[{f: t.at('He rides'), x: 1270, y: 1790, s: 1.5}]}
+  <RouteMap keys={[{f: t.at('He rides'), x: 2122, y: 2793, s: 0.917}]}
     legs={[{pts: arc(P.juarez, P.chihuahua, -0.1), a: t.at('rides'), b: t.at('Chihuahua') + 6}]}
     pins={[{p: P.juarez, at: t.at('He rides'), label: 'Juárez', dx: -180, dy: -60}, {p: P.chihuahua, at: t.at('Chihuahua'), label: 'Chihuahua City', dx: 20, dy: 10}]}>
     <Note text="he writes home..." x={140} y={880} size={60} at={t.at('writes')} />

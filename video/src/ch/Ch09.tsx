@@ -24,7 +24,7 @@ const Letter: React.FC<{t: Timeline}> = ({t}) => (
 );
 
 const Guessing: React.FC<{t: Timeline}> = ({t}) => (
-  <RouteMap keys={[{f: t.at('US officials'), x: 1330, y: 1850, s: 1.1}]} dim={0.25}
+  <RouteMap keys={[{f: t.at('US officials'), x: 2220, y: 2887, s: 0.672}]} dim={0.25}
     pins={[{p: P.juarez, at: t.at('US officials'), label: 'Juárez', dx: -170, dy: -60}, {p: P.chihuahua, at: t.at('US officials') + 3, label: 'Chihuahua', dx: 20, dy: 10}]}>
     <Note text="U.S. officials asked around" x={140} y={110} size={60} at={t.at('asked')} />
     <Note text="even among Villa's own men" x={170} y={210} size={60} at={t.at("Villa's")} />
@@ -102,7 +102,7 @@ const Nobody: React.FC<{t: Timeline}> = ({t}) => (
 );
 
 const Question: React.FC<{t: Timeline}> = ({t}) => (
-  <RouteMap keys={[{f: 0, x: 1900, y: 1300, s: 0.44}]} dim={0.55}>
+  <RouteMap keys={[{f: 0, x: 3181, y: 1987, s: 0.269}]} dim={0.55}>
     <Note text="so, back to our question..." x={200} y={200} size={60} at={t.at('So back')} />
     <Highlight text="HOW DOES ONE MAN" x={200} y={330} size={110} at={t.at('How does')} seed={913} rot={-2} />
     <Highlight text="LIVE THAT MANY LIVES?" x={240} y={510} size={110} at={t.at('live that')} seed={915} rot={-1} />
@@ -141,7 +141,7 @@ const Leaving: React.FC<{t: Timeline}> = ({t}) => {
   const a = t.at('The jobs');
   const legs = LIFE.map((pts, i) => ({pts, a: a + i * 5, b: a + i * 5 + 8}));
   return (
-    <RouteMap keys={[{f: a, x: 1700, y: 1350, s: 0.42}, {f: t.at('stone wall') + 20, x: 1500, y: 1500, s: 0.5}]} legs={legs} dim={0.2}
+    <RouteMap keys={[{f: a, x: 2847, y: 2073, s: 0.257}, {f: t.at('stone wall') + 20, x: 2511, y: 2320, s: 0.306}]} legs={legs} dim={0.2}
       pins={[{p: P.meigs, at: a}, {p: P.chihuahua, at: a + LIFE.length * 5 + 8}]}>
       <Note text="the jobs kept changing..." x={140} y={100} size={60} at={a} />
       <Note text="because he kept leaving" x={170} y={200} size={64} at={t.at('kept leaving')} color="#FF9F1C" />
