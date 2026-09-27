@@ -42,5 +42,6 @@ the file exists. `title_sting.mp3` is reused from Fix Everything.
 ## Render
 
 - Stills: `node tools/stills_all.mjs '{"Ch03":[10,20]}'` → `out/stills/`; `python3 tools/sheet.py out/s.jpg out/stills/*.jpg` for a contact sheet.
+- Thumbnails: `node tools/thumbs.mjs` renders the `Thumb-A/B/C` concepts (src/Thumbnail.tsx) at 1280x720 → `../review/thumbnails/`.
 - Chapters: `tools/render_chapter.sh 01 Ch01_Unknown_Destination 02 Ch02_Thirteen_As …` → `../review/chapters/`.
 - Whole video: `tools/render_full.sh` (after the chapters) → `out/Bierce_1080p.mp4`, `../review/Bierce_720p.mp4`.

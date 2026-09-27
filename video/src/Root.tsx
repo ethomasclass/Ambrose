@@ -12,6 +12,7 @@ import {Ch06, CH06_FRAMES} from './ch/Ch06';
 import {Ch07, CH07_FRAMES} from './ch/Ch07';
 import {Ch08, CH08_FRAMES} from './ch/Ch08';
 import {Ch09, CH09_FRAMES} from './ch/Ch09';
+import {ThumbnailA, ThumbnailB, ThumbnailC, THUMB_FRAMES} from './Thumbnail';
 
 export const CHAPTERS: [string, React.FC, number][] = [
   ['Ch01', Ch01, CH01_FRAMES], ['Ch02', Ch02, CH02_FRAMES], ['Ch03', Ch03, CH03_FRAMES],
@@ -33,5 +34,8 @@ export const Root: React.FC = () => (
       <Composition key={id} id={id} width={W} height={H} fps={FPS} durationInFrames={frames} component={() => <JFonts><C /></JFonts>} />
     ))}
     <Composition id="Full" width={W} height={H} fps={FPS} durationInFrames={CHAPTERS.reduce((a, c) => a + c[2], 0)} component={() => <JFonts><Full /></JFonts>} />
+    <Composition id="Thumb-A" width={W} height={H} fps={FPS} durationInFrames={THUMB_FRAMES} component={() => <JFonts><ThumbnailA /></JFonts>} />
+    <Composition id="Thumb-B" width={W} height={H} fps={FPS} durationInFrames={THUMB_FRAMES} component={() => <JFonts><ThumbnailB /></JFonts>} />
+    <Composition id="Thumb-C" width={W} height={H} fps={FPS} durationInFrames={THUMB_FRAMES} component={() => <JFonts><ThumbnailC /></JFonts>} />
   </>
 );
