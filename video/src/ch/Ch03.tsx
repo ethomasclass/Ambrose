@@ -94,7 +94,7 @@ const Kennesaw: React.FC<{t: Timeline}> = ({t}) => {
 const Flatcar: React.FC<{t: Timeline}> = ({t}) => (
   <PaletteCtx.Provider value={PALETTES.quiet}>
     <AbsoluteFill>
-      <Gen name="ch03_flatcar" t0={t.at('The bullet')} t1={t.at('And he survives')} quiet brightness={0.8} />
+      <Gen name="ch03_flatcar" t0={t.at('The bullet')} t1={t.at('And he survives')} quiet brightness={0.8} trace={t.at('flatcar') + 2} />
       <Note text="skull cracked · bullet behind his left ear" x={120} y={100} size={54} at={t.at('cracks')} />
       <Note text="an open flatcar · two days · no roof" x={140} y={190} size={54} at={t.at('flatcar')} />
       <Highlight text="“BROKE LIKE A WALNUT”" x={120} y={840} size={96} at={t.at('broke')} seed={319} rot={-2} />

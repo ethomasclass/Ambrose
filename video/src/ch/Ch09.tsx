@@ -44,7 +44,7 @@ const Ojinaga: React.FC<{t: Timeline}> = ({t}) => (
 
 const Mojada: React.FC<{t: Timeline}> = ({t}) => (
   <AbsoluteFill>
-    <Gen name="ch09_sierra_mojada" t0={t.at('Maybe he was')} t1={t.at('It says')} trace={t.at('firing') + 2} />
+    <Gen name="ch09_sierra_mojada" t0={t.at('Maybe he was')} t1={t.at('It says')} trace={t.at('firing') + 2} quiet />
     <Note text="theory 2: a firing squad in..." x={120} y={100} size={56} at={t.at('Maybe he was')} />
     <Highlight text="SIERRA MOJADA" x={110} y={200} size={100} at={t.at('Sierra')} seed={907} rot={-2} />
     <Note text="a priest collects the old-timers' stories" x={130} y={840} size={52} at={t.at('priest')} />

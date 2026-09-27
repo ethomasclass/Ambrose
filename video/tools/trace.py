@@ -123,10 +123,15 @@ def main():
         masks = {c: m for c, m in masks.items() if m.any()}
         # Alignment check: outside the fills the painted copy should match the source pixel for pixel.
         # A redrawn or shifted copy leaves the outline off the figure, so say so instead of failing quietly.
+        # Compared at a quarter size, so fine hatching and JPEG noise don't count; a real shift or redraw still does.
         keep = np.ones(a.shape[:2], bool)
         for m in masks.values():
             keep &= cv2.dilate(m, np.ones((15, 15), np.uint8)) == 0
-        diff = np.abs(a - np.asarray(src).astype(int)).mean(axis=2)[keep].mean()
+        small = (size[0] // 4, size[1] // 4)
+        pa = cv2.resize(a.astype(np.uint8), small, interpolation=cv2.INTER_AREA).astype(int)
+        ps = cv2.resize(np.asarray(src), small, interpolation=cv2.INTER_AREA).astype(int)
+        ks = cv2.resize(keep.astype(np.uint8), small, interpolation=cv2.INTER_NEAREST).astype(bool)
+        diff = np.abs(pa - ps).mean(axis=2)[ks].mean()
         print(f"  alignment: mean difference outside the fill = {diff:.1f} (under ~12 is aligned)")
         if diff > 12:
             print("  WARNING: the painted copy was redrawn or moved; ask for the matte version instead")

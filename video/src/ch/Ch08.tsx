@@ -85,8 +85,15 @@ const Villa: React.FC<{t: Timeline}> = ({t}) => (
     <Note text="one of the most famous rebel generals:" x={120} y={100} size={54} at={t.at('famous rebel')} />
     <Highlight text="PANCHO VILLA" x={110} y={190} size={110} at={t.at('Pancho')} seed={809} rot={-2} />
     <Note text="former outlaw → general" x={140} y={820} size={60} at={t.at('outlaw')} />
-    <Note text="a huge army, moving by train" x={160} y={910} size={56} at={t.at('train')} />
-    <Note text="American papers: obsessed" x={1200} y={400} size={56} at={t.at('obsessed')} color="#FF9F1C" />
+  </AbsoluteFill>
+);
+
+const Train: React.FC<{t: Timeline}> = ({t}) => (
+  <AbsoluteFill>
+    <Gen name="ch08_troop_train" t0={t.at('moving')} t1={t.at('So Bierce')} z0={1.02} z1={1.1} trace={t.at('train') + 2} />
+    <Note text="a huge army, moving by train" x={120} y={100} size={60} at={t.at('huge')} />
+    <Note text="American papers: obsessed" x={140} y={200} size={60} at={t.at('obsessed')} color="#FF9F1C" />
+    <Tag text="Illustration · a revolutionary troop train, Chihuahua, 1913" />
   </AbsoluteFill>
 );
 
@@ -146,6 +153,7 @@ const Body: React.FC = () => {
         [at('Quick') - 1, <Diaz t={t} />],
         [at('But in 1913') - 1, <Huerta t={t} />],
         [at('One of the') - 1, <Villa t={t} />],
+        [at('moving') - 1, <Train t={t} />],
         [at('So Bierce') - 1, <Crossing t={t} />],
         [at('In late') - 1, <TierraBlanca t={t} />],
         [at('He rides') - 1, <Chihuahua t={t} />],
@@ -153,7 +161,7 @@ const Body: React.FC = () => {
         [at("That's Bierce") - 1, <Punchline t={t} />],
       ]}
       stamps={['October', 'a war', 'Porfirio', '1910', 'But in 1913', 'murdered', 'Pancho', 'Ciudad', 'November']}
-      writes={['farewell', 'keeps going', 'border', 'And across', 'Quick', 'thirty', 'dictator', 'threw', 'seized', 'elected', 'So now', 'famous rebel', 'outlaw', 'train', 'obsessed', '71', 'observer', 'big win', 'rifle', 'confirm', 'character', 'writes', "That's Bierce", 'goodbye']}
+      writes={['huge', 'farewell', 'keeps going', 'border', 'And across', 'Quick', 'thirty', 'dictator', 'threw', 'seized', 'elected', 'So now', 'famous rebel', 'outlaw', 'obsessed', '71', 'observer', 'big win', 'rifle', 'confirm', 'character', 'writes', "That's Bierce", 'goodbye']}
       ticks={['New Orleans', 'Texas', 'El Paso', 'Tierra', 'Chihuahua']}
     />
   );
