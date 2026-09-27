@@ -12,6 +12,8 @@ Everything here is for moments no archive can cover. Real people (Bierce, Hazen,
 - **Aspect ratio:** 16:9 for every image.
 - **Each prompt:** paste the whole block, **including the Style paragraph**. Keeping it identical is what makes the images look like one series.
 - **Sending them back:** PNG, named as shown (e.g. `ch01_last_letter.png`). If a result has text, extra fingers, modern objects or a wrong detail, regenerate it rather than fixing it.
+- **Mask files:** name the magenta copy `<name>_mask.png` (e.g. `ch01_last_letter_mask.png`).
+- **How to send:** drag them into this chat, or add them to `video/public/img/gen/` in the Ambrose repo. The video already has a labelled slot for each one, and it fills in as soon as the file is there.
 - **Mask pass (where listed):** once you have an image you like, upload that same image back into Gemini with the mask-pass prompt and send me both files. The mask lets me put the coral colour and the teal outline on exactly the right thing.
 
 **Style** (goes at the end of every prompt below). It's the Reform Era paragraph with the painters and era moved forward to Bierce's lifetime:
@@ -140,7 +142,7 @@ No execution shown.
 - **Mode:** Custom, **Instrumental ON**. Paste the **Styles** text as written, and the **Exclude** text into Exclude Styles.
 - **Length:** Suno makes songs of 2 minutes or more. That's fine: anything at least as long as the target works, because I cut, trim and fade to the narration.
 - **Pick** the take where the first 30 seconds already sound like the cue. I build most of the cue from the opening.
-- **Sending them back:** MP3, named as shown (e.g. `cold_open.mp3`).
+- **Sending them back:** MP3, named as shown (e.g. `cold_open.mp3`). Drag them into this chat, or add them to `video/public/music/`.
 - **Title sting and channel intro:** reuse the ones from Fix Everything (`title_sting.mp3`, `Channel_Intro`). Nothing new needed.
 
 **Exclude** (the same for every cue):
