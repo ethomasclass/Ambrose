@@ -71,7 +71,7 @@ const Body: React.FC = () => {
   const t = makeTimeline(N, 30);
   const at = t.at;
   return (
-    <Chapter t={t} frames={CH07_FRAMES} audio="audio/ch07_highlight_reel.wav" music="music/heavy.mp3" musicVol={0.14}
+    <Chapter t={t} frames={CH07_FRAMES} audio="audio/ch07_highlight_reel.wav" music="music/dix.mp3" musicVol={0.14}
       cuts={[
         [0, <Reel t={t} />],
         [at('He married') - 1, <Family t={t} />],

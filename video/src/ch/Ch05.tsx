@@ -5,7 +5,7 @@ import words from '../../public/audio/ch05_bitter_bierce.words.json';
 import {makeTimeline, type Narration, type Timeline} from '../lib/timing';
 import {Highlight, Loop, Note, PALETTES, PaletteCtx, StepCtx, Tag} from '../jh/Kit';
 import {Card, DarkPaper} from './common';
-import {Chapter, Gen, MusicBed, Quote, Stamp} from './bits';
+import {Chapter, Gen, has, MusicBed, Quote, Stamp} from './bits';
 
 const N = words as Narration;
 export const CH05_FRAMES = Math.ceil(N.duration * 30) + 30;
@@ -133,7 +133,7 @@ const Body: React.FC = () => {
   const at = t.at;
   return (
     <Chapter t={t} frames={CH05_FRAMES} audio="audio/ch05_bitter_bierce.wav"
-      extra={<><MusicBed src="music/bitter.mp3" from={0} to={at('And in his') + 10} /><MusicBed src="music/owl_creek.mp3" from={at('And in his') - 5} to={CH05_FRAMES - 10} vol={0.16} /></>}
+      extra={<><MusicBed src={has('music/newsroom.mp3') ? 'music/newsroom.mp3' : 'music/nativism.mp3'} from={0} to={at('And in his') + 10} skip={has('music/newsroom.mp3') ? 0 : 50} /><MusicBed src="music/spirits_dark.mp3" from={at('And in his') - 5} to={CH05_FRAMES - 10} vol={0.16} /></>}
       cuts={[
         [0, <Wasp t={t} />],
         [at('A few') - 1, <Hearst t={t} />],

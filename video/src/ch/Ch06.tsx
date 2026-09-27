@@ -105,7 +105,7 @@ const Body: React.FC = () => {
   const t = makeTimeline(N, 30);
   const at = t.at;
   return (
-    <Chapter t={t} frames={CH06_FRAMES} audio="audio/ch06_my_price.wav" music="music/price.mp3"
+    <Chapter t={t} frames={CH06_FRAMES} audio="audio/ch06_my_price.wav" music="music/abolition_b.mp3"
       cuts={[
         [0, <Capital t={t} />],
         [at("Here's the") - 1, <Loan t={t} />],

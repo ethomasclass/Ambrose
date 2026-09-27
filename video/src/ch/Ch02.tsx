@@ -70,7 +70,7 @@ const Body: React.FC = () => {
   const t = makeTimeline(N, 30);
   const at = t.at;
   return (
-    <Chapter t={t} frames={CH02_FRAMES} audio="audio/ch02_thirteen_as.wav" music="music/boyhood.mp3"
+    <Chapter t={t} frames={CH02_FRAMES} audio="audio/ch02_thirteen_as.wav" music="music/schools.mp3"
       cuts={[
         [0, <Ohio t={t} />],
         [at('He was number') - 1, <As t={t} />],

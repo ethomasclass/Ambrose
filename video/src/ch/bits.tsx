@@ -205,10 +205,11 @@ export const TabCard: React.FC<{src: string; x: number; y: number; w: number; h:
   );
 };
 
-/** A music cue under part of a chapter (from/to in chapter frames), faded in and out; silent until the file arrives. */
-export const MusicBed: React.FC<{src: string; from: number; to: number; vol?: number; fade?: number}> = ({src, from, to, vol = 0.15, fade = 20}) =>
+/** A music cue under part of a chapter (from/to in chapter frames), faded in and out; `skip` starts the cue that many
+ * seconds in. Silent until the file arrives. */
+export const MusicBed: React.FC<{src: string; from: number; to: number; vol?: number; fade?: number; skip?: number}> = ({src, from, to, vol = 0.15, fade = 20, skip = 0}) =>
   has(src) ? (
     <Sequence from={from} durationInFrames={Math.max(1, to - from)} layout="none">
-      <Audio src={staticFile(src)} volume={(f) => interpolate(f, [0, fade, to - from - fade, to - from], [0, vol, vol, 0], clamp)} />
+      <Audio src={staticFile(src)} startFrom={Math.round(skip * 30)} volume={(f) => interpolate(f, [0, fade, to - from - fade, to - from], [0, vol, vol, 0], clamp)} />
     </Sequence>
   ) : null;

@@ -6,7 +6,7 @@ import {clamp} from '../lib/anim';
 import {makeTimeline, type Narration, type Timeline} from '../lib/timing';
 import {Highlight, Note, PALETTES, PaletteCtx, StepCtx, Tag} from '../jh/Kit';
 import {DarkPaper} from './common';
-import {Chapter, Full, Gen, has, Quote, Stamp, StrikeLine, TabCard} from './bits';
+import {Chapter, Full, Gen, has, MusicBed, Quote, Stamp, StrikeLine, TabCard} from './bits';
 import {LIFE, P, RouteMap} from './map';
 
 const N = words as Narration;
@@ -169,7 +169,8 @@ const Body: React.FC = () => {
   const t = makeTimeline(N, 30);
   const at = t.at;
   return (
-    <Chapter t={t} frames={CH09_FRAMES} audio="audio/ch09_off_the_map.wav" music="music/ending.mp3" musicVol={0.16}
+    <Chapter t={t} frames={CH09_FRAMES} audio="audio/ch09_off_the_map.wav"
+      extra={<><MusicBed src="music/cold_open.mp3" from={0} to={at('So back') + 10} /><MusicBed src="music/ending.mp3" from={at('So back') - 5} to={CH09_FRAMES - 10} vol={0.16} /></>}
       cuts={[
         [0, <Letter t={t} />],
         [at('US officials') - 1, <Guessing t={t} />],
