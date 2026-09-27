@@ -107,7 +107,7 @@ const Body: React.FC = () => {
   const t = makeTimeline(N, 30);
   const at = t.at;
   return (
-    <Chapter t={t} frames={CH04_FRAMES} audio="audio/ch04_young_grump.wav" music="music/temperance.mp3"
+    <Chapter t={t} frames={CH04_FRAMES} audio="audio/ch04_young_grump.wav" music={has('music/west.mp3') ? 'music/west.mp3' : 'music/temperance.mp3'}
       cuts={[
         [0, <West t={t} />],
         [at('San Francisco', 2) - 1, <City t={t} />],
