@@ -4,6 +4,8 @@ Two ways to get a mask:
   paint  Gemini returns the image with chosen figures filled flat magenta / green (pixel-aligned);
          the fills become masks.  python3 tools/trace.py paint <image> "<what to fill>" <name>
   alpha  a cut-out PNG (rembg) supplies the mask.            python3 tools/trace.py alpha <png> <name>
+  fromfile  a magenta-painted copy made by hand in Gemini.   python3 tools/trace.py fromfile <painted> <source> <name>
+  matte  a white-subject-on-black matte (the fallback).     python3 tools/trace.py matte <matte> <source> <name>
 
 Writes public/img/jh/masks/<name>_<colour>.png (white = subject, same size as the source) and
 public/img/jh/masks/<name>.json: {"size": [w, h], "shapes": {"magenta": [svg path, ...], ...},
@@ -113,11 +115,26 @@ def main():
         save(name, painted.size, masks)
     elif mode == "fromfile":          # an already painted image: tools/trace.py fromfile <painted.png> <source> <name>
         painted = Image.open(sys.argv[2]).convert("RGB")
-        size = Image.open(sys.argv[3]).size
+        src = Image.open(sys.argv[3]).convert("RGB")
+        size = src.size
         a = np.asarray(painted.resize(size, Image.LANCZOS)).astype(int)
         r, g, b = a[..., 0], a[..., 1], a[..., 2]
         masks = {col: clean(f(r, g, b).astype(np.uint8) * 255) for col, f in COLOURS.items()}
-        save(sys.argv[4], size, {c: m for c, m in masks.items() if m.any()})
+        masks = {c: m for c, m in masks.items() if m.any()}
+        # Alignment check: outside the fills the painted copy should match the source pixel for pixel.
+        # A redrawn or shifted copy leaves the outline off the figure, so say so instead of failing quietly.
+        keep = np.ones(a.shape[:2], bool)
+        for m in masks.values():
+            keep &= cv2.dilate(m, np.ones((15, 15), np.uint8)) == 0
+        diff = np.abs(a - np.asarray(src).astype(int)).mean(axis=2)[keep].mean()
+        print(f"  alignment: mean difference outside the fill = {diff:.1f} (under ~12 is aligned)")
+        if diff > 12:
+            print("  WARNING: the painted copy was redrawn or moved; ask for the matte version instead")
+        save(sys.argv[4], size, masks)
+    elif mode == "matte":             # a white-on-black silhouette: tools/trace.py matte <matte.png> <source> <name>
+        size = Image.open(sys.argv[3]).size
+        m = np.asarray(Image.open(sys.argv[2]).convert("L").resize(size, Image.LANCZOS))
+        save(sys.argv[4], size, {"magenta": clean(((m > 127).astype(np.uint8) * 255))})
     elif mode == "alpha":
         im = Image.open(sys.argv[2]).convert("RGBA")
         m = clean(((np.asarray(im)[..., 3] > 128).astype(np.uint8) * 255), min_area=5000)
