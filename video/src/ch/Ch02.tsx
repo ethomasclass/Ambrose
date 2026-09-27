@@ -9,7 +9,7 @@ import {Chapter, Def, Gen, Stamp, StrikeLine} from './bits';
 import {P, RouteMap} from './map';
 
 const N = words as Narration;
-export const CH02_FRAMES = Math.ceil(N.duration * 30) + 30;
+export const CH02_FRAMES = Math.ceil(N.duration * 30) + 60; // the last title holds for 2 s
 
 const Ohio: React.FC<{t: Timeline}> = ({t}) => (
   <RouteMap keys={[{f: 0, x: P.meigs[0] - 245, y: P.meigs[1] - 98, s: 0.55}, {f: t.at('Ohio') + 10, x: P.meigs[0] - 65, y: P.meigs[1] - 33, s: 0.917}]}

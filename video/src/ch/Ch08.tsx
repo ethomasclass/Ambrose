@@ -150,7 +150,7 @@ const Body: React.FC = () => {
       cuts={[
         [0, <Tour t={t} />],
         [at('And across') - 1, <War t={t} />],
-        [at('Quick') - 1, <Diaz t={t} />],
+        [Math.max(at('Quick') - 1, at('a war') + 60), <Diaz t={t} />],
         [at('But in 1913') - 1, <Huerta t={t} />],
         [at('One of the') - 1, <Villa t={t} />],
         [at('moving') - 1, <Train t={t} />],

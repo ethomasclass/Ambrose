@@ -136,13 +136,13 @@ const Body: React.FC = () => {
         [0, <Enlist t={t} />],
         [at('The next') - 1, <Shiloh t={t} />],
         [at("That's more") - 1, <Compare t={t} />],
-        [at('Most old') - 1, <Dead t={t} />],
+        [Math.max(at('Most old') - 1, at('together') + 60), <Dead t={t} />],
         [at('He was good') - 1, <Hazen t={t} />],
-        [at('That sounds') - 1, <Mapmaker t={t} />],
+        [Math.max(at('That sounds') - 1, at('Hazen') + 60), <Mapmaker t={t} />],
         [at('Then', 2) - 1, <Kennesaw t={t} />],
         [at('The bullet') - 1, <Flatcar t={t} />],
-        [at('And he survives') - 1, <Resign t={t} />],
-        [at("So that's") - 1, <Done t={t} />],
+        [Math.max(at('And he survives') - 1, at('broke') + 60), <Resign t={t} />],
+        [Math.max(at("So that's") - 1, at('resigns') + 60), <Done t={t} />],
       ]}
       stamps={['1861', '9th', 'Shiloh', '23,000', 'together', 'topographical', 'Hazen', 'mapmaker', 'June', 'broke', 'resigns', 'life number', 'done', '22']}
       writes={['Civil War', '18', 'makes the', 'drag', 'Two days', 'killed', "That's more", 'Revolution', '1812', 'Mexican', 'flags', 'the dead', 'lieutenant', 'for General', 'fancy', 'Google', 'sometimes', 'Kennesaw', 'sharpshooter', 'cracks', 'flatcar', 'And he survives', 'back on', 'headaches', 'He is']}

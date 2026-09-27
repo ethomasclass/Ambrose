@@ -9,7 +9,7 @@ import {Chapter, Full, Gen, has, Quote, Stamp} from './bits';
 import {arc, P, RouteMap} from './map';
 
 const N = words as Narration;
-export const CH06_FRAMES = Math.ceil(N.duration * 30) + 30;
+export const CH06_FRAMES = Math.ceil(N.duration * 30) + 60; // the last title holds for 2 s
 
 const Capital: React.FC<{t: Timeline}> = ({t}) => (
   <AbsoluteFill>
@@ -108,14 +108,14 @@ const Body: React.FC = () => {
     <Chapter t={t} frames={CH06_FRAMES} audio="audio/ch06_my_price.wav" music={has('music/price.mp3') ? 'music/price.mp3' : 'music/abolition_b.mp3'}
       cuts={[
         [0, <Capital t={t} />],
-        [at("Here's the") - 1, <Loan t={t} />],
+        [Math.max(at("Here's the") - 1, at('1896') + 60), <Loan t={t} />],
         [at('Now railroad') - 1, <Huntington t={t} />],
         [at('So Hearst') - 1, <Send t={t} />],
-        [at('And one') - 1, <Steps t={t} />],
+        [Math.max(at('And one') - 1, at('kill') + 60), <Steps t={t} />],
         [at('Bierce did') - 1, <Price t={t} />],
         [at('If when you') - 1, <Reply t={t} />],
         [at('That line') - 1, <Died t={t} />],
-        [at('So soldier') - 1, <Tally t={t} />],
+        [Math.max(at('So soldier') - 1, at('died') + 60), <Tally t={t} />],
       ]}
       stamps={['1896', 'government', 'the railroads', 'Collis', 'kill', 'name his', '130', 'died', 'reporter', 'tycoon']}
       writes={['favorite', "Here's the", 'fortune', 'transcontinental', 'richest', 'hook', 'sends', 'steps', 'Everybody', 'Bierce did', 'exact', 'ran', 'furious', 'So soldier', 'soldier', 'mapmaker', 'failed']}

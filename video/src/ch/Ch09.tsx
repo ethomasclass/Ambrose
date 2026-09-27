@@ -174,17 +174,17 @@ const Body: React.FC = () => {
       cuts={[
         [0, <Letter t={t} />],
         [at('US officials') - 1, <Guessing t={t} />],
-        [at('Maybe he died') - 1, <Ojinaga t={t} />],
+        [Math.max(at('Maybe he died') - 1, at('guessing') + 60), <Ojinaga t={t} />],
         [at('Maybe he was') - 1, <Mojada t={t} />],
         [at('It says') - 1, <Suppose t={t} />],
         [at('Or maybe') - 1, <Nickell t={t} />],
         [at('Nickell thinks') - 1, <Canyon t={t} />],
         [at('And yes') - 1, <Aliens t={t} />],
         [at('The truth') - 1, <Nobody t={t} />],
-        [at('So back') - 1, <Question t={t} />],
-        [at('Look at them') - 1, <Again t={t} />],
-        [at('Go where') - 1, <Job t={t} />],
-        [at('The jobs') - 1, <Leaving t={t} />],
+        [Math.max(at('So back') - 1, at('nobody') + 60), <Question t={t} />],
+        [Math.max(at('Look at them') - 1, at('live that') + 60), <Again t={t} />],
+        [Math.max(at('Go where') - 1, at('same job') + 60), <Job t={t} />],
+        [Math.max(at('The jobs') - 1, at('Write down') + 60), <Leaving t={t} />],
         [at('He spent') - 1, <End t={t} />],
       ]}
       stamps={['December', 'guessing', 'Ojinaga', 'Sierra', 'Suppose not', 'Nickell', 'never been found', 'Grand Canyon', 'nobody', 'How does', 'live that', 'same job', 'Go where', 'Look at it', 'Write down']}

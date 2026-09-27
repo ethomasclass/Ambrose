@@ -110,13 +110,13 @@ const Body: React.FC = () => {
     <Chapter t={t} frames={CH04_FRAMES} audio="audio/ch04_young_grump.wav" music={has('music/west.mp3') ? 'music/west.mp3' : 'music/temperance.mp3'}
       cuts={[
         [0, <West t={t} />],
-        [at('San Francisco', 2) - 1, <City t={t} />],
+        [Math.max(at('San Francisco', 2) - 1, at('stays') + 60), <City t={t} />],
         [at('And Bierce figures') - 1, <Talent t={t} />],
         [at('In 1872') - 1, <London t={t} />],
-        [at('Pen names') - 1, <Burner t={t} />],
+        [Math.max(at('Pen names') - 1, at('Dod') + 60), <Burner t={t} />],
         [at('Back in') - 1, <Dakota t={t} />],
         [at('Yes that') - 1, <Deadwood t={t} />],
-        [at('The company') - 1, <Fails t={t} />],
+        [Math.max(at('The company') - 1, at('managing') + 60), <Fails t={t} />],
       ]}
       stamps={['1866', 'stays', 'boomtown', 'roasting', 'England', 'Dod', 'Pen names', '1880', 'managing', 'fails', 'Back to']}
       writes={['inspect', 'quits', 'miners', 'newspapers', 'real talent', 'Politicians', 'Preachers', 'Poets', 'Anybody', 'humor', 'first books', 'burner', 'savage', 'distance', 'totally', 'Dakota', 'Wild West', 'His job', 'about a year']}

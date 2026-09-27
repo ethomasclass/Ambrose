@@ -148,13 +148,13 @@ const Body: React.FC = () => {
   const cuts: [number, React.ReactNode][] = [
     [0, <Letter t={t} />],
     [at('A 71-year-old') - 1, <Old t={t} />],
-    [at('He finishes') - 1, <LastLine t={t} />],
+    [Math.max(at('He finishes') - 1, at('revolutionary') + 60), <LastLine t={t} />],
     [at('And then') - 1, <OffMap t={t} />],
-    [at('His name') - 1, <Name t={t} />],
+    [Math.max(at('His name') - 1, at('off the map') + 60), <Name t={t} />],
     [at('Before that') - 1, <Wall t={t} />],
     [at('Most people') - 1, <Seven t={t} />],
-    [at("So here's") - 1, <Question t={t} />],
-    [at('And the answer') - 1, <Ink t={t} />],
+    [Math.max(at("So here's") - 1, at('seven') + 60), <Question t={t} />],
+    [Math.max(at('And the answer') - 1, at('live that') + 60), <Ink t={t} />],
     [END, <Sequence from={END} layout="none"><ChannelIntro /></Sequence>],
     [END + INTRO_FRAMES, <Sequence from={END + INTRO_FRAMES} layout="none"><Title /></Sequence>],
   ];

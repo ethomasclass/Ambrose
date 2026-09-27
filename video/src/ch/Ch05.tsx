@@ -138,7 +138,7 @@ const Body: React.FC = () => {
         [0, <Wasp t={t} />],
         [at('A few') - 1, <Hearst t={t} />],
         [at('Back then') - 1, <Internet t={t} />],
-        [at('And Bierce was') - 1, <Bitter t={t} />],
+        [Math.max(at('And Bierce was') - 1, at('Newspapers were') + 60, at('were the') + 60), <Bitter t={t} />],
         [at('His columns') - 1, <Dictionary t={t} />],
         [at('History an account') - 1, <History t={t} />],
         [at('And in his') - 1, <OwlCreek t={t} />],
